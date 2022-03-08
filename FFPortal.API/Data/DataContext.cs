@@ -15,10 +15,12 @@ namespace FFPortal.API.Data
         }
 
         public DbSet<VehicleType> VehicleTypes { get; set; }
+        public DbSet<Chofer> Choferes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Chofer>().HasIndex(x => x.Nombre).IsUnique();
             modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();
         }
     }
